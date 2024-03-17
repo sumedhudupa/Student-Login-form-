@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1,h2,h3{
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            color: white;
+            text-decoration: double;
+            
+        }
+        body{
+            background-color: black;
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1><center>Student Details</center></h1>
+    <fieldset>
+    <legend>Application Form</legend>
+        Enter your First Name: <input type="text" id ="fname" maxlength="10"><br>
+        Enter your Middle Name:<input type = "text" id="mname" maxlength="10"><br>
+        Enter your last Name: <input type = "text" id="lname" maxlength="10"><br>
+        D.O.B: <input type="date" id="dob"><br>
+        Board Marks: <input type="number" id="bm"><br>
+        Max marks: <input type="number" id="maxmarks"><br>
+        <!--<a href = "submittedform.html" target="_blank">
+            <button type="submit" id="submit" onclick="submittedform.html" >Submit</button>-->
+            <button type="submit" id="submit" onclick="result()" >Submit</button>
+        <!--</a>-->
+        <br>
+        <em id="name"></em>
+        <script>
+            function result(){
+                var fname,mname,lname,dob,bm,maxmarks;
+                fname = document.getElementById("fname").value;
+                mname = document.getElementById("mname").value;
+                lname = document.getElementById("lname").value;
+                dob = document.getElementById("dob").value;
+                bm = parseFloat(document.getElementById("bm").value);
+                maxmarks = parseFloat(document.getElementById("maxmarks").value);
+                var percent = (bm)/(maxmarks);
+                document.getElementById("name").innerHTML=fname + mname + lname+" ,born on " + dob + " has scored " + percent + " in board exam";
+                
+                serialStorage.setItem(0,fname);
+                serialStorage.setItem(1,mname);
+                serialStorage.setItem(2,lname);
+                serialStorage.setItem(3,dob);
+                serialStorage.setItem(4,toString(percent));
+                
+            }
+        </script>
+    </fieldset>
+</body>
+</html>
